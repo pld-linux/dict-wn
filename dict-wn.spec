@@ -1,3 +1,4 @@
+%define		dictname wn
 Summary:	WordNet lexical reference system formatted as dictionary for dictd
 Name:		dict-wn
 Version:	1.5
@@ -10,9 +11,9 @@ URL:		http://www.dict.org/
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	dictzip
+BuildRequires:	autoconf
 Requires:	dictd 
 Requires:	%{_sysconfdir}/dictd
-BuildArch:	noarch
 
 %description 
 This package contains WordNet (r) 1.6 Lexical Database formatted for
@@ -22,6 +23,7 @@ use by the dictionary server in the dictd package.
 %setup -q
 
 %build
+autoconf
 %configure 
 %{__make} db 
 
