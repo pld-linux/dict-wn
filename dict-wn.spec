@@ -7,6 +7,7 @@ Release:	1
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
 Source0:	ftp://ftp.dict.org/pub/dict/pre/%{name}_%{version}.tar.gz
+# Source0-md5:	e58001b93c59a607bc9d5903a80df71e
 URL:		http://www.dict.org/
 Requires:	dictd
 Requires:	%{_sysconfdir}/dictd
