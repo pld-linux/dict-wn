@@ -1,18 +1,18 @@
 %define		dictname wn
 Summary:	WordNet lexical reference system formatted as dictionary for dictd
 Summary(pl):	System referencji s³ownikowych WordNet dla dictd
-Name:		dict-wn
+Name:		dict-%{dictname}
 Version:	1.5
 Release:	3
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
 URL:		http://www.dict.org/
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-BuildRequires:	dictzip
 BuildRequires:	autoconf
+BuildRequires:	dictzip
 Requires:	dictd
 Requires:	%{_sysconfdir}/dictd
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This package contains WordNet (r) 1.6 Lexical Database formatted for
@@ -38,24 +38,24 @@ install -d $RPM_BUILD_ROOT{%{_datadir}/dictd/,%{_sysconfdir}/dictd}
 dictprefix=%{_datadir}/dictd/wn
 echo "# WordNet 1.6 Lexical Database dictionary
 database %{dictname} {
-    data  \"$dictprefix.dict.dz\"
-    index \"$dictprefix.index\"
+	data  \"$dictprefix.dict.dz\"
+	index \"$dictprefix.index\"
 }" > $RPM_BUILD_ROOT%{_sysconfdir}/dictd/%{dictname}.dictconf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%postun
-if [ -f /var/lock/subsys/dictd ]; then
-	/etc/rc.d/init.d/dictd restart 1>&2 || true
-fi
 
 %post
 if [ -f /var/lock/subsys/dictd ]; then
 	/etc/rc.d/init.d/dictd restart 1>&2
 fi
 
+%postun
+if [ -f /var/lock/subsys/dictd ]; then
+	/etc/rc.d/init.d/dictd restart 1>&2 || true
+fi
+
 %files
 %defattr(644,root,root,755)
 %attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/dictd/%{dictname}.dictconf
-%{_datadir}/dictd/%{dictname}*
+%{_datadir}/dictd/%{dictname}.*
