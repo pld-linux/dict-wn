@@ -3,7 +3,7 @@ Summary:	WordNet lexical reference system formatted as dictionary for dictd
 Summary(pl):	System referencji s³ownikowych WordNet dla dictd
 Name:		dict-wn
 Version:	1.5
-Release:	2
+Release:	3
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
