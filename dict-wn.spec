@@ -14,11 +14,11 @@ Requires:	%{_sysconfdir}/dictd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This package contains WordNet (r) %version Lexical Database formatted for
+This package contains WordNet (r) %{version} Lexical Database formatted for
 use by the dictionary server in the dictd package.
 
 %description -l pl
-Ten pakiet zawiera leksykaln± bazê danych WordNet (r) %version sformatowan±
+Ten pakiet zawiera leksykaln± bazê danych WordNet (r) %{version} sformatowan±
 do u¿ywania z serwerem s³ownika dictd.
 
 %prep
@@ -29,7 +29,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_datadir}/dictd,%{_sysconfdir}/dictd}
 
 dictprefix=%{_datadir}/dictd/%{dictname}
-echo "# WordNet %version Lexical Database dictionary
+echo "# WordNet %{version} Lexical Database dictionary
 database %{dictname} {
 	data  \"$dictprefix.dict.dz\"
 	index \"$dictprefix.index\"
