@@ -1,5 +1,6 @@
 %define		dictname wn
 Summary:	WordNet lexical reference system formatted as dictionary for dictd
+Summary(pl):	System referencji s³ownikowych WordNet dla dictd
 Name:		dict-wn
 Version:	1.5
 Release:	2
@@ -7,8 +8,8 @@ License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
 Group(de):	Applikationen/Wörterbücher
 Group(pl):	Aplikacje/S³owniki
-URL:		http://www.dict.org/
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
+URL:		http://www.dict.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	dictzip
 BuildRequires:	autoconf
@@ -18,6 +19,10 @@ Requires:	%{_sysconfdir}/dictd
 %description 
 This package contains WordNet (r) 1.6 Lexical Database formatted for
 use by the dictionary server in the dictd package.
+
+%description -l pl
+Ten pakiet zawiera leksykaln± bazê danych WordNet sformatowan± do
+u¿ywania z serwerem s³ownika dictd.
 
 %prep 
 %setup -q
