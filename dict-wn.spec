@@ -2,11 +2,11 @@
 Summary:	WordNet lexical reference system formatted as dictionary for dictd
 Summary(pl):	System referencji s³ownikowych WordNet dla dictd
 Name:		dict-%{dictname}
-Version:	1.5
-Release:	3
+Version:	1.7a
+Release:	1
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
-Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.dict.org/pub/dict/pre/%{name}_%{version}.tar.gz
 URL:		http://www.dict.org/
 BuildRequires:	autoconf
 BuildRequires:	dictzip
@@ -15,28 +15,23 @@ Requires:	%{_sysconfdir}/dictd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This package contains WordNet (r) 1.6 Lexical Database formatted for
+This package contains WordNet (r) %{version} Lexical Database formatted for
 use by the dictionary server in the dictd package.
 
 %description -l pl
-Ten pakiet zawiera leksykaln± bazê danych WordNet sformatowan± do
-u¿ywania z serwerem s³ownika dictd.
+Ten pakiet zawiera leksykaln± bazê danych WordNet w wersji %{version} 
+sformatowan± do u¿ywania z serwerem s³ownika dictd.
 
 %prep
-%setup -q
-
-%build
-%{__autoconf}
-%configure
-%{__make} db
+%setup -q -c 0 -n wordnet
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_datadir}/dictd/,%{_sysconfdir}/dictd}
-%{__make} install dictdir="$RPM_BUILD_ROOT%{_datadir}/dictd/"
+install wn* $RPM_BUILD_ROOT%{_datadir}/dictd/
 
 dictprefix=%{_datadir}/dictd/wn
-echo "# WordNet 1.6 Lexical Database dictionary
+echo "# WordNet %{version} Lexical Database dictionary
 database %{dictname} {
 	data  \"$dictprefix.dict.dz\"
 	index \"$dictprefix.index\"
