@@ -11,10 +11,10 @@ URL:		http://www.dict.org/
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 BuildRequires:	dictzip
 BuildRequires:	autoconf
-Requires:	dictd 
+Requires:	dictd
 Requires:	%{_sysconfdir}/dictd
 
-%description 
+%description
 This package contains WordNet (r) 1.6 Lexical Database formatted for
 use by the dictionary server in the dictd package.
 
@@ -22,13 +22,13 @@ use by the dictionary server in the dictd package.
 Ten pakiet zawiera leksykaln± bazê danych WordNet sformatowan± do
 u¿ywania z serwerem s³ownika dictd.
 
-%prep 
+%prep
 %setup -q
 
 %build
 autoconf
-%configure 
-%{__make} db 
+%configure
+%{__make} db
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -39,7 +39,7 @@ dictprefix=%{_datadir}/dictd/wn
 echo "# WordNet 1.6 Lexical Database dictionary
 database %{dictname} {
     data  \"$dictprefix.dict.dz\"
-    index \"$dictprefix.index\" 
+    index \"$dictprefix.index\"
 }" > $RPM_BUILD_ROOT%{_sysconfdir}/dictd/%{dictname}.dictconf
 
 %clean
