@@ -26,7 +26,7 @@ u¿ywania z serwerem s³ownika dictd.
 %setup -q
 
 %build
-autoconf
+%{__autoconf}
 %configure
 %{__make} db
 
