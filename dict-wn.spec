@@ -2,12 +2,13 @@
 Summary:	WordNet lexical reference system for dictd
 Summary(pl):	System referencji s³ownikowych WordNet dla dictd
 Name:		dict-%{dictname}
-Version:	1.7a
-Release:	2
+Version:	2.0
+Release:	1
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
-Source0:	ftp://ftp.dict.org/pub/dict/pre/%{name}_%{version}.tar.gz
-# Source0-md5:	e58001b93c59a607bc9d5903a80df71e
+# note: pre means preformatted
+Source0:	ftp://ftp.dict.org/pub/dict/pre/%{name}-%{version}-pre.tar.gz
+# Source0-md5:	fcfedcc13815cde1e28103b61c05c168
 URL:		http://www.dict.org/
 Requires:	dictd
 Requires:	%{_sysconfdir}/dictd
