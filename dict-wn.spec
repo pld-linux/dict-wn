@@ -4,17 +4,18 @@ Name:		dict-%{dictname}
 Version:	1.5
 Release:	1
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
-Group:		Applications/Dictionary
+Group:		Applications/Dictionaries
+Group(pl):	Aplikacje/S³owniki
 URL:		http://www.dict.org/
 Source0:	ftp://ftp.dict.org/pub/dict/%{name}-%{version}.tar.gz
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-BuildRequires:  dictzip
-Requires:       dictd 
-BuildArch:      noarch
+BuildRequires:	dictzip
+Requires:	dictd 
+BuildArch:	noarch
 
 %description 
-This package contains WordNet (r) 1.6 Lexical Database
-formatted for use by the dictionary server in the dictd package.
+This package contains WordNet (r) 1.6 Lexical Database formatted for
+use by the dictionary server in the dictd package.
 
 %prep 
 %setup -q
@@ -28,7 +29,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_datadir}/dictd/
 
 DICTDIR="$RPM_BUILD_ROOT%{_datadir}/dictd/"
-make install dictdir="$DICTDIR" 
+%{__make} install dictdir="$DICTDIR" 
 
 %clean
 rm -rf $RPM_BUILD_ROOT
