@@ -10,17 +10,17 @@ Group:		Applications/Dictionaries
 Source0:	ftp://ftp.dict.org/pub/dict/pre/%{name}-%{version}-pre.tar.gz
 # Source0-md5:	fcfedcc13815cde1e28103b61c05c168
 URL:		http://www.dict.org/
-Requires:	dictd
 Requires:	%{_sysconfdir}/dictd
+Requires:	dictd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This package contains WordNet (r) %{version} Lexical Database formatted for
-use by the dictionary server in the dictd package.
+This package contains WordNet (r) %{version} Lexical Database
+formatted for use by the dictionary server in the dictd package.
 
 %description -l pl
-Ten pakiet zawiera leksykaln± bazê danych WordNet (r) %{version} sformatowan±
-do u¿ywania z serwerem s³ownika dictd.
+Ten pakiet zawiera leksykaln± bazê danych WordNet (r) %{version}
+sformatowan± do u¿ywania z serwerem s³ownika dictd.
 
 %prep
 %setup -c -q
@@ -52,5 +52,5 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/dictd/%{dictname}.dictconf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dictd/%{dictname}.dictconf
 %{_datadir}/dictd/%{dictname}.*
