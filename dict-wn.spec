@@ -1,6 +1,6 @@
 %define		dictname wn
 Summary:	WordNet lexical reference system for dictd
-Summary(pl):	System referencji s³ownikowych WordNet dla dictd
+Summary(pl.UTF-8):   System referencji sÅ‚ownikowych WordNet dla dictd
 Name:		dict-%{dictname}
 Version:	2.0
 Release:	2
@@ -18,9 +18,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 This package contains WordNet (r) %{version} Lexical Database
 formatted for use by the dictionary server in the dictd package.
 
-%description -l pl
-Ten pakiet zawiera leksykaln± bazê danych WordNet (r) %{version}
-sformatowan± do u¿ywania z serwerem s³ownika dictd.
+%description -l pl.UTF-8
+Ten pakiet zawiera leksykalnÄ… bazÄ™ danych WordNet (r) %{version}
+sformatowanÄ… do uÅ¼ywania z serwerem sÅ‚ownika dictd.
 
 %prep
 %setup -c -q
