@@ -1,6 +1,6 @@
 %define		dictname wn
 Summary:	WordNet lexical reference system for dictd
-Summary(pl.UTF-8):   System referencji słownikowych WordNet dla dictd
+Summary(pl.UTF-8):	System referencji słownikowych WordNet dla dictd
 Name:		dict-%{dictname}
 Version:	2.0
 Release:	2
