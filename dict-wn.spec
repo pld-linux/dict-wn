@@ -3,15 +3,16 @@ Summary:	WordNet lexical reference system for dictd
 Summary(pl):	System referencji s³ownikowych WordNet dla dictd
 Name:		dict-%{dictname}
 Version:	2.0
-Release:	2
+Release:	3
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
 # note: pre means preformatted
 Source0:	ftp://ftp.dict.org/pub/dict/pre/%{name}-%{version}-pre.tar.gz
 # Source0-md5:	fcfedcc13815cde1e28103b61c05c168
 URL:		http://www.dict.org/
-Requires:	dictd
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	%{_sysconfdir}/dictd
+Requires:	dictd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -41,16 +42,14 @@ mv %{dictname}.* $RPM_BUILD_ROOT%{_datadir}/dictd
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /var/lock/subsys/dictd ]; then
-	/etc/rc.d/init.d/dictd restart 1>&2
-fi
+%service -q dictd restart
 
 %postun
-if [ -f /var/lock/subsys/dictd ]; then
-	/etc/rc.d/init.d/dictd restart 1>&2 || true
+if [ "$1" = 0 ]; then
+	%service -q dictd restart
 fi
 
 %files
 %defattr(644,root,root,755)
-%attr(640,root,root) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/dictd/%{dictname}.dictconf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dictd/%{dictname}.dictconf
 %{_datadir}/dictd/%{dictname}.*
