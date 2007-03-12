@@ -1,0 +1,5 @@
+- forced my version of 1.7a:
+- more unified with other dicts,
+- removed BR: autoconf, dictzip,
+- standard %buildsubdir,
+- other cosmetics.
