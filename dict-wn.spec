@@ -2,17 +2,17 @@
 Summary:	WordNet lexical reference system for dictd
 Summary(pl.UTF-8):	System referencji słownikowych WordNet dla dictd
 Name:		dict-%{dictname}
-Version:	2.0
-Release:	3
+Version:	3.0
+Release:	1
 License:	Free to use, but see http://www.cogsci.princeton.edu/~wn/
 Group:		Applications/Dictionaries
-# note: pre means preformatted
-Source0:	ftp://ftp.dict.org/pub/dict/pre/%{name}-%{version}-pre.tar.gz
-# Source0-md5:	fcfedcc13815cde1e28103b61c05c168
+Source0:	%{name}-%{version}.tar.gz
+# Source0-md5:	bac633bda094b0a4f458a87a5660080c
 URL:		http://www.dict.org/
 BuildRequires:	rpmbuild(macros) >= 1.268
 Requires:	%{_sysconfdir}/dictd
 Requires:	dictd
+BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -51,5 +51,6 @@ fi
 
 %files
 %defattr(644,root,root,755)
+%doc AUTHORS README copyright
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/dictd/%{dictname}.dictconf
 %{_datadir}/dictd/%{dictname}.*
